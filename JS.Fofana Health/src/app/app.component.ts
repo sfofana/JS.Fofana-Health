@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './services/user.service';
-import { Observable } from 'rxjs';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import 'firebase/database';
-import { query } from '@angular/animations';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { UnsubscribeService } from './services/unsubscribe.service';
 import { takeUntil } from 'rxjs/operators';
+import { Employee } from './models/employee';
 
 @Component({
   selector: 'app-root',
@@ -23,30 +21,60 @@ export class AppComponent implements OnInit {
   private invalid ="";
   private sessionSet = 'set';
   public canLogout = false;
-  database: AngularFireList<any>;
+  private user = new Employee();
+  private employee = new Employee();
   results: any[];
-  result: any;
 
-  constructor(private service: UserService, private memory: UnsubscribeService) {}
+  constructor(private service: UserService, private memory: UnsubscribeService, private repository: AngularFireDatabase) {}
 
   ngOnInit() {
-    //this.database = this.repository.list('/JSFofanaHealth/user');
-    //this.database.push({name: 'alhaji'});
-    //this.results = database.valueChanges();
-    // this.repository.list('/JSFofanaHealth/user', ref => ref.orderByChild('name').equalTo('alhaji')).valueChanges().subscribe(data=>{
-    //     this.results=data;
-    //     console.log(this.results);
-    //   });
-    this.service.authentication('sufyan@gmail.com').pipe(takeUntil(this.memory.unsubscribe)).subscribe(data=>{
-      if(data.length == 0){
-        console.log('Invalid email or password');
-      }
-      this.results=data;    
-    });
+   this.user.email='master@yahoo.com';
+   this.user.firstname='Zara';
+   this.user.lastname='Koroma';
+   this.user.password='demo';
   }
 
   ngOnDestroy(){
     this.memory.unsubscribe.next();
     this.memory.unsubscribe.complete();
   }
+  add(){
+    //this.repository.list('/JSFofanaHealth/user').push(this.user);
+  }
+
+  login(){
+    this.service.authentication(this.email).pipe(takeUntil(this.memory.unsubscribe)).subscribe(data=>{
+      if(data.length == 0){
+        this.cancel();
+        this.invalid = 'Invalid email or password';
+      }
+      for(let res of data)
+      {
+        if(!(res.email == this.email) || !(res.password == this.password)){
+          this.cancel();
+          this.invalid = 'Invalid email or password';
+          this.employee = res;
+        }
+        if(res.email == this.email && res.password == this.password){
+          this.cancel();
+          this.success = 'Successful Login';
+          this.employee = res;
+        }   
+      } 
+    });
+  }
+
+  cancel(){
+    this.email="";
+    this.password="";
+    this.success="";
+    this.invalid="";
+  }
+
+  logout(){
+    //this.router.navigate(['']);
+    localStorage.clear();
+    this.canLogout=false;
+  }
+
 }
