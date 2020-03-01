@@ -21,6 +21,7 @@
 </nav> 
 
 <section>
+  <p *ngFor="let res of results">{{res | json}}</p>
   <router-outlet></router-outlet>
 </section>
 
