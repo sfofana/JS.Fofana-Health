@@ -23,4 +23,8 @@ export class RepositoryService {
   allRecords(): Observable<Person[]>{
     return this.repository.list<Person>(this.personDB).valueChanges();
   }
+
+  recordById(id: number): Observable<Person[]>{
+    return this.repository.list<Person>(this.personDB, ref => ref.orderByChild(this.perQuery).equalTo(id)).valueChanges();
+  }
 }

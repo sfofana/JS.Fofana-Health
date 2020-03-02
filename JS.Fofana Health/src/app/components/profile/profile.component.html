@@ -10,7 +10,7 @@
                     <i class="fas fa-user-circle blue-text"></i>
                   </div>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-8" *ngFor="let person of people">
                     <p class="font-weight-bold lead mb-2"><strong>{{person.firstname}} {{person.lastname}}</strong></p>
                     <p class="font-weight-bold text-muted mb-0">SSN: {{person.ssn}}<br>ID: {{person.id}}</p><hr>
                     <p class="font-weight-bold text-muted mb-0">Security Question: {{person.question}}?<br>Answer: {{person.answer}}</p><br>
@@ -35,11 +35,11 @@
                     <i class="fas fa-file-invoice-dollar green-text"></i>
                   </div>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-8" *ngFor="let person of people">
                     <p class="font-weight-bold lead mb-2"><strong>Deductibles</strong></p>
                     <p class="font-weight-bold text-muted mb-0">
                         Individual: {{person.deductibles.individual | currency}}<br>
-                        Family: {{person.deductibles.individual | currency }}<br>
+                        Family: {{person.deductibles.individual | currency}}<br>
                         Urgent Care: {{person.deductibles.individual | currency}}<br>
                         HospitalER: {{person.deductibles.individual | currency}}<br>
                         Generic: {{person.deductibles.generic | currency}}

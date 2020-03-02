@@ -17,4 +17,8 @@ export class UserService {
   getAllRecords(): Observable<Person[]>{
     return this.repository.allRecords();
   }
+
+  getRecordById(id: number): Observable<Person[]>{
+    return this.repository.recordById(id);
+  }
 }
