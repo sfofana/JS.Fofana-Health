@@ -14,11 +14,13 @@ import { environment } from 'src/environments/environment';
 import { UserService } from './services/user.service';
 import { RepositoryService } from './services/repository.service';
 import { UnsubscribeService } from './services/unsubscribe.service';
+import { ClientComponent } from './components/client/client.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    ClientComponent
   ],
   imports: [
     BrowserModule,
