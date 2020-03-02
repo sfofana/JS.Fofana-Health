@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable, throwError } from 'rxjs';
 import { Employee } from '../models/employee';
-import { Person } from 'schematics-utilities';
+import { Person } from '../models/person';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +19,8 @@ export class RepositoryService {
   userData(email: string): Observable<Employee[]>{
     return this.repository.list<Employee>(this.userDB, ref => ref.orderByChild(this.empQuery).equalTo(email)).valueChanges();
   }
-  
+
   allRecords(): Observable<Person[]>{
-    return this.repository.list<Person[]>(this.personDB).valueChanges();
+    return this.repository.list<Person>(this.personDB).valueChanges();
   }
 }

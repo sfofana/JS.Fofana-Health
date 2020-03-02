@@ -1,0 +1,59 @@
+<div class="container py-5 my-5">
+    <section class="p-md-5 mx-md-5 text-center text-lg-left grey z-depth-1">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+          <div class="card">
+            <div class="card-body m-3">
+              <div class="row">
+                <div class="col-lg-4 d-flex mb-2 align-items-center">
+                  <div class="avatar mx-4 w-100 white d-flex justify-content-center align-items-center">
+                    <i class="fas fa-user-circle blue-text"></i>
+                  </div>
+                </div>
+                <div class="col-lg-8">
+                    <p class="font-weight-bold lead mb-2"><strong>{{person.firstname}} {{person.lastname}}</strong></p>
+                    <p class="font-weight-bold text-muted mb-0">SSN: {{person.ssn}}<br>ID: {{person.id}}</p><hr>
+                    <p class="font-weight-bold text-muted mb-0">Security Question: {{person.question}}?<br>Answer: {{person.answer}}</p><br>
+                    <p class="mb-4">Address: {{person.address}}<br>
+                        Plan: {{person.plan}}<br>
+                        Provider: {{person.provider}}<br>
+                        Active Date: {{person.startDate}}<br>
+                    </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+          <div class="card">
+            <div class="card-body m-3">
+              <div class="row">
+                <div class="col-lg-4 d-flex mb-2 align-items-center">
+                  <div class="avatar mx-4 w-100 white d-flex justify-content-center align-items-center">
+                    <i class="fas fa-file-invoice-dollar green-text"></i>
+                  </div>
+                </div>
+                <div class="col-lg-8">
+                    <p class="font-weight-bold lead mb-2"><strong>Deductibles</strong></p>
+                    <p class="font-weight-bold text-muted mb-0">
+                        Individual: {{person.deductibles.individual | currency}}<br>
+                        Family: {{person.deductibles.individual | currency }}<br>
+                        Urgent Care: {{person.deductibles.individual | currency}}<br>
+                        HospitalER: {{person.deductibles.individual | currency}}<br>
+                        Generic: {{person.deductibles.generic | currency}}
+                    </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+<div>
+    
+</div>

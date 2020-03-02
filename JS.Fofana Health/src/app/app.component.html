@@ -21,8 +21,7 @@
 </nav> 
 
 <section>
-  <button (click)='add()'>add</button>
-  <p *ngFor="let res of results">{{res | json}}</p>
+  <app-add></app-add>
   <router-outlet></router-outlet>
 </section>
 

@@ -15,12 +15,16 @@ import { UserService } from './services/user.service';
 import { RepositoryService } from './services/repository.service';
 import { UnsubscribeService } from './services/unsubscribe.service';
 import { ClientComponent } from './components/client/client.component';
+import { AddComponent } from './add/add.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ClientComponent
+    ClientComponent,
+    AddComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

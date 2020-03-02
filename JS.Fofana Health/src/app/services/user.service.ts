@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { RepositoryService } from './repository.service';
 import { Observable } from 'rxjs';
 import { Employee } from '../models/employee';
-import { Person } from 'schematics-utilities';
+import { Person } from '../models/person';
 
 @Injectable({
   providedIn: 'root'

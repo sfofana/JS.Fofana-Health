@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './services/user.service';
-import { AngularFireDatabase } from 'angularfire2/database';
 import { UnsubscribeService } from './services/unsubscribe.service';
 import { takeUntil } from 'rxjs/operators';
 import { Employee } from './models/employee';
 import { Router } from '@angular/router';
-import { Person } from './models/person';
 
 @Component({
   selector: 'app-root',
@@ -23,33 +21,18 @@ export class AppComponent implements OnInit {
   private invalid ="";
   private sessionSet = 'set';
   public canLogout = false;
-  private user = new Employee();
+  
   private employee = new Employee();
-  private person = new Person();
   results: any[];
 
-  constructor(private service: UserService, private memory: UnsubscribeService, private router: Router, private repository: AngularFireDatabase) {}
+  constructor(private service: UserService, private memory: UnsubscribeService, private router: Router) {}
 
   ngOnInit() {
-   this.user.email='master@yahoo.com';
-   this.user.firstname='Zara';
-   this.user.lastname='Koroma';
-   this.user.password='demo';
-   this.person.id=1124162144;
-   this.person.firstname='Foday';
-   this.person.lastname='Bangura';
-   this.person.plan='High Deductible';
-   this.person.provider='Revature Health';
-   this.person.deductibles='$9600';
   }
 
   ngOnDestroy(){
     this.memory.unsubscribe.next();
     this.memory.unsubscribe.complete();
-  }
-  add(){
-    //this.repository.list('/JSFofanaHealth/user').push(this.user);
-    //this.repository.list('/JSFofanaHealth/person').push(this.person);
   }
 
   login(){

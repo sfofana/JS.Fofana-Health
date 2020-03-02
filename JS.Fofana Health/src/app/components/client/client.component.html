@@ -48,6 +48,7 @@
             <td>{{record.plan}}</td>
             <td>{{record.provider}}</td>
             <td>{{record.startDate}}</td>
+            <td><button (click)="profile(record)">Profile</button></td>
           </tr>
         </tbody>
         <!--Table body-->
@@ -162,5 +163,9 @@
     <!--Section: Content-->
   
   
+  </div>
+  
+  <div *ngIf="show">
+    <app-profile></app-profile>
   </div>
   

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UnsubscribeService } from 'src/app/services/unsubscribe.service';
 import { UserService } from 'src/app/services/user.service';
-import { Person } from 'schematics-utilities';
+import { Person } from 'src/app/models/person';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -12,7 +12,10 @@ import { takeUntil } from 'rxjs/operators';
 export class ClientComponent implements OnInit {
 
   private term: string;
-  records: Person[];
+  public person = new Person();
+  private records: Person[];
+  private show = false;
+  public refresh = false;
 
   constructor(private service: UserService, private memory: UnsubscribeService) { }
 
@@ -23,5 +26,12 @@ export class ClientComponent implements OnInit {
   ngOnDestroy(){
     this.memory.unsubscribe.next();
     this.memory.unsubscribe.complete();
+  }
+
+  profile(person: Person){
+    this.person = person;
+    console.dir(person);
+    this.show=true;
+    this.refresh != this.refresh;
   }
 }

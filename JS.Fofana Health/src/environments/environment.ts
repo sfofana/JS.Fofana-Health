@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "your-firebase-credential"
+    apiKey: "your-ai-credentials"
   }
 };
 
