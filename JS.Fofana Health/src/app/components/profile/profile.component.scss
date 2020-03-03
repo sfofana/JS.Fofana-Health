@@ -1,3 +1,27 @@
 .row{
     margin-top: 3%;
 }
+
+.view{
+    background: linear-gradient(to bottom, #039be5, #0277bd);
+}
+.panel{
+    background: linear-gradient(to bottom, #fff8e1, #f8f1da);
+    border-radius: 10px;
+}
+.container{
+    background: linear-gradient(to bottom, #d3c393e7, #ccbd8ee7);
+    border-radius: 10px;
+}
+.pattern{
+    background:
+    linear-gradient(135deg, #fae7af 21px, #ffe082 22px, #ffe082 24px, transparent 24px, transparent 67px, #ffe082 67px, #ffe082 69px, transparent 69px),
+    linear-gradient(225deg, #fae7af  21px, #ffe082 22px, #ffe082 24px, transparent 24px, transparent 67px, #ffe082 67px, #ffe082 69px, transparent 69px)0 64px;
+    background-color:#ffecb3e7;
+    background-size: 64px 128px;
+    border-radius: 10px;
+}
+
+.btn{
+    background: linear-gradient(to bottom, #039be5, #0277bd);
+}

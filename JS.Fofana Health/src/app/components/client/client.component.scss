@@ -3,8 +3,21 @@
 }
 .panel{
     background: linear-gradient(to bottom, #fff8e1, #f8f1da);
+    margin-bottom: 3%;
 }
 .container{
     background: linear-gradient(to bottom, #d3c393e7, #ccbd8ee7);
     border-radius: 10px;
+}
+
+.btn{
+    background: linear-gradient(to bottom, #039be5, #0277bd);
+}
+
+.invalid{
+    color: red;
+}
+
+.none{
+    margin: 3%;
 }

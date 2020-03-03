@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   
-  title = "JS.Fofana Bank";
+  title = "JS.Fofana Health";
   // validatingForm: FormGroup;
   // public user = new User();
   private email = "";
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   private sessionSet = 'set';
   public canLogout = false;
   
-  private employee = new Employee();
+  public employee = new Employee();
   results: any[];
 
   constructor(private service: UserService, private memory: UnsubscribeService, private router: Router) {}
@@ -52,6 +52,7 @@ export class AppComponent implements OnInit {
           this.cancel();
           this.success = 'Successful Login';
           this.router.navigate(['client']);
+          localStorage[data[0].email]= this.sessionSet;
           this.canLogout=true;
           this.employee = res;
         }   
