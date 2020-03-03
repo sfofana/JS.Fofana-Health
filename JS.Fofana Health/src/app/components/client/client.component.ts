@@ -19,6 +19,9 @@ export class ClientComponent implements OnInit, OnDestroy {
   private records: Person[];
   private cacheRecords: Person[];
   private noResults: string;
+  private totalPages: Array<any>;
+  private perPage: number = 10;
+  private items = [];
 
   constructor(
     private session: AppComponent, 
@@ -28,10 +31,12 @@ export class ClientComponent implements OnInit, OnDestroy {
     ) { }
 
   ngOnInit() {
+    
    //this.authentication();
     this.service.getAllRecords().pipe(takeUntil(this.memory.unsubscribe)).subscribe(data=>{
       this.records=data;
       this.cacheRecords=data;
+      this.items = Array(this.cacheRecords.length).fill(0).map((i) => ({ id: (i + 1), name: this.cacheRecords[i+1]}));
     });
   }
 
@@ -52,7 +57,6 @@ export class ClientComponent implements OnInit, OnDestroy {
 
   profile(person: Person){
     this.router.navigate(['/profile', person.id])
-    console.dir(person);
   }
 
   search(){
@@ -64,6 +68,7 @@ export class ClientComponent implements OnInit, OnDestroy {
       this.cacheRecords = [];
       this.term = this.term.charAt(0).toUpperCase() + this.term.slice(1).toLowerCase();
       this.records.filter(data=>{
+        console.log(this.cacheRecords.length);
          if(data.firstname.startsWith(this.term) ||
             data.lastname.startsWith(this.term) ||
             data.id.toString().startsWith(this.term) 
@@ -76,7 +81,14 @@ export class ClientComponent implements OnInit, OnDestroy {
         }
       });
     }
-    
   }
+
+  display(){
+
+  }
+  onChangePage(totalPages: Array<any>) {
+    this.totalPages = totalPages;
+}
+
 
 }
