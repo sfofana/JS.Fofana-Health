@@ -108,12 +108,10 @@
       
      <!-- Table with panel -->
 <div class="card panel card-cascade narrower">
-    <div class="md-form mb-5">
-        
-        <input type="text" id="defaultForm-text" [(ngModel)]="term" class="form-control"
+    <div class="md-form mx-5 d-flex"> 
+        <input type="text"  id="defaultForm-text" [(ngModel)]="term" class="form-control"
               (keyup)="search()" mdbInput mdbValidate>
-        <label for="defaultForm-email">Search Records</label>
-        
+        <label for="defaultForm-text">Search Records</label>     
       </div>
   <!--Card image-->
   <div
@@ -160,8 +158,30 @@
     </div>
     
   </div>
+  
   <div class="row none d-flex justify-content-center">
     <h5 class="invalid" *ngIf="noResults">{{noResults}}</h5>
+  </div>
+
+  <div class="row none d-flex justify-content-center">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination pg-blue">
+        <li class="page-item disabled">
+          <span class="page-link">Previous</span>
+        </li>
+        <li class="page-item"><a class="page-link" mdbWavesEffect>1</a></li>
+        <li class="page-item active">
+          <span class="page-link" mdbWavesEffect>
+            2
+            
+          </span>
+        </li>
+        <li class="page-item"><a class="page-link" mdbWavesEffect>3</a></li>
+        <li class="page-item">
+          <a class="page-link" mdbWavesEffect>Next</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </div>
 <!-- Table with panel -->

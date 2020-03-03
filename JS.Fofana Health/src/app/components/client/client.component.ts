@@ -64,15 +64,19 @@ export class ClientComponent implements OnInit, OnDestroy {
       this.cacheRecords = [];
       this.term = this.term.charAt(0).toUpperCase() + this.term.slice(1).toLowerCase();
       this.records.filter(data=>{
-         if(data.firstname.startsWith(this.term)){
+         if(data.firstname.startsWith(this.term) ||
+            data.lastname.startsWith(this.term) ||
+            data.id.toString().startsWith(this.term) 
+            ) {
           this.cacheRecords.push(data);
           this.noResults = '';
         }
+        if(this.cacheRecords.length == 0){
+          this.noResults = 'No search results found...';
+        }
       });
     }
-    if(this.cacheRecords.length == 0){
-      this.noResults = 'No search results found...';
-    }
+    
   }
 
 }
